@@ -96,7 +96,7 @@ $('#generateVideo').addEventListener('click',async()=>{
   const {Client,handle_file}=await import('https://cdn.jsdelivr.net/npm/@gradio/client/dist/index.min.js');
   const app=await Client.connect('zerogpu-aoti/wan2-2-fp8da-aoti-faster');
   message('Demande envoyée. La génération peut prendre plusieurs minutes selon la file d’attente…');
-  const result=await app.predict('/generate_video',[handle_file(file),prompt,4,'',2,1,1,42,true]);
+  const result=await app.predict('/generate_video',[handle_file(file),prompt,4,'',3.5,1,1,42,true]);
   const item=result&&result.data&&result.data[0];
   const videoUrl=typeof item==='string'?item:(item&&(item.url||item.path||item.video));
   if(!videoUrl)throw new Error('Le fichier vidéo retourné n’a pas été reconnu.');
